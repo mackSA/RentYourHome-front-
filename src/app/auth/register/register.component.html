@@ -8,25 +8,25 @@
                     <div class="card">
                         <div class="card-body">
                             <!-- Form register -->
-                            <form>
+                            <form #yourForm="ngForm" (ngSubmit)="onSubmit()">
                                 <h2 class="text-center font-up font-bold deep-orange-text py-4">Sign up</h2>
                                 <div class="md-form">
                                     <i class="fa fa-user prefix grey-text"></i>
-                                    <input type="text" id="orangeForm-name3" class="form-control">
-                                    <label for="orangeForm-name3">Your name</label>
+                                    <input type="text" id="orangeForm-name3" class="form-control" [(ngModel)]="username" name="username" placeholder="Username">
+                                   
                                 </div>
                                 <div class="md-form">
                                     <i class="fa fa-envelope prefix grey-text"></i>
-                                    <input type="text" id="orangeForm-email3" class="form-control">
-                                    <label for="orangeForm-email3">Your email</label>
+                                    <input type="text" id="orangeForm-email3" class="form-control" [(ngModel)]="email" name="email" placeholder="email">
+                                    
                                 </div>
                                 <div class="md-form">
                                     <i class="fa fa-lock prefix grey-text"></i>
-                                    <input type="password" id="orangeForm-pass3" class="form-control">
-                                    <label for="orangeForm-pass3">Your password</label>
+                                    <input type="password" id="orangeForm-pass3" class="form-control" [(ngModel)]="password" name="password" placeholder="password">
+                                   
                                 </div>
                                 <div class="text-center">
-                                    <button class="btn btn-deep-orange">next<i class="fa fa-angle-double-right pl-2" aria-hidden="true"></i></button>
+                                    <button class="btn btn-deep-orange" type="submit">next<i class="fa fa-angle-double-right pl-2" aria-hidden="true"></i></button>
                                 </div>
                             </form>
                             <!-- Form register -->
