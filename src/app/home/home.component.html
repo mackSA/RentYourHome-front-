@@ -20,19 +20,19 @@
           <hr class="bg-dark w-25">
           <div class="row" style="margin:30px;background:#f26f62;padding:20px; margin-bottom:70px;" >
 
-              <form class="form-inline" align='center' style="text-align:center; ">
+              <form class="form-inline" align='center' style="text-align:center; " #yourForm="ngForm" (ngSubmit)="onSubmit()">
                 <label class="sr-only" for="inlineFormInput">Name</label>
-                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="e.g Pretoria">
+                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="e.g Pretoria"  [(ngModel)]="location" name="location">
 
 
                <label class="sr-only" for="rooms">Name</label>
-               <select class="form-control mb-2 mr-sm-2 mb-sm-0" id="rooms">
-                   <option>Rooms</option>
-                   <option>1</option>
-                   <option>2</option>
-                   <option>3</option>
-                   <option>4</option>
-                   <option>5+</option>
+               <select class="form-control mb-2 mr-sm-2 mb-sm-0" id="rooms" [(ngModel)]="Rooms" name="Rooms">
+                   <option value="1">Rooms</option>
+                   <option value="1">1</option>
+                   <option value="2">2</option>
+                   <option value="3">3</option>
+                   <option value="4">4</option>
+                   <option value="5+">5+</option>
                </select>
 
                <div class="form-group">

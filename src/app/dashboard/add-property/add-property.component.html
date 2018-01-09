@@ -1,13 +1,14 @@
 <div class="container">
   <h1>Add Property</h1>
-<form #yourForm="ngForm" (ngSubmit)="onSubmit()">
+  <b>Please enter all the field and procced</b>
+<form #Form="ngForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
-    <label for="exampleInputEmail1">Listin heading</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" [(ngModel)]="heading" name="heading" aria-describedby="emailHelp" placeholder="Listing heading">
+    <label for="exampleInputEmail1">Listing heading</label>
+    <input type="text" class="form-control" #headingref="ngModel"   id="exampleInputEmail1" [(ngModel)]="heading" name="heading" aria-describedby="emailHelp" placeholder="Listing heading" required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">loaction</label>
-    <input type="text" class="form-control" [(ngModel)]="location" name="location" id="exampleInputPassword1" placeholder="Listing location">
+    <input type="text" class="form-control" #locationRef [(ngModel)]="location" name="location" id="exampleInputPassword1" placeholder="Listing location" required>
   </div>
   <div class="form-group">
     <label for="exampleSelect1">Rooms</label>
@@ -21,7 +22,7 @@
   </div>
   <div class="form-group">
     <label for="exampleSelect2">Bathrooms</label>
-    <select  class="form-control" id="exampleSelect2" [(ngModel)]="brooms" name="brooms" >
+    <select  class="form-control" id="exampleSelect2"  [(ngModel)]="brooms" name="brooms" >
       <option value="1">1</option>
       <option value="2">2</option>
       <option alue="3+">3+</option>
@@ -29,13 +30,28 @@
   </div>
   <div class="form-group">
     <label for="exampleTextarea">Listing Description</label>
-    <textarea class="form-control" id="exampleTextarea" rows="4" [(ngModel)]="description" name="description" ></textarea>
+    <textarea class="form-control" #DesRef id="exampleTextarea" rows="4" [(ngModel)]="description" name="description" required ></textarea >
   </div>
   <div class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" #fileupload [(ngModel)]="image" name="image" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" (change)="fileChange(fileupload.files)">
+    <label for="exampleInputFile">Image 1</label>
+    <input type="file" #fileupload [(ngModel)]="image" name="image" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" (change)="fileChange($event)" required>
    
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="form-group">
+    <label for="exampleInputFile">Image 2</label>
+    <input type="file" #fileupload [(ngModel)]="image1" name="image" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" (change)="fileChange1($event)" required>
+   
+  </div>
+  <div class="form-group">
+    <label for="exampleInputFile">Image 3</label>
+    <input type="file" #fileupload [(ngModel)]="image2" name="image" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" (change)="fileChange2($event)" required>
+   
+  </div>
+  <div class="form-group">
+    <label for="exampleInputFile">Image 4</label>
+    <input type="file" #fileupload [(ngModel)]="image3" name="image" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" (change)="fileChange3($event)" required>
+   
+  </div>
+  <button type="submit" class="btn btn-primary btn-block" [hidden]="!Form.valid">Submit</button>
 </form>
 </div>

@@ -22,7 +22,7 @@ loginUser()
       this.user.setToken(data.access_token,data.expires_in + Date.now());
 
       if(this.user.isAuthenticated()){
-           this.router.navigate(['Dasboard']);
+           this.router.navigate(['dasboard']);
       }
     console.log(data);
    

@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { UserService } from './services/auth/auth.service';
 import { DashboardService } from './services/dashboard.service';
+import { SearchService } from './services/search.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -14,6 +15,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { DasboardComponent } from './dashboard/dasboard/dasboard.component';
 import { AddPropertyComponent } from './Dashboard/add-property/add-property.component';
+import { SearchComponent } from './search/search.component';
 
 const appRoutes: Routes = [
   {
@@ -39,6 +41,11 @@ const appRoutes: Routes = [
   {
     path: 'add/property',
     component:  AddPropertyComponent
+  },
+
+  {
+    path: 'search',
+    component:  SearchComponent
   }
 
 ];
@@ -51,7 +58,8 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     DasboardComponent,
-    AddPropertyComponent
+    AddPropertyComponent,
+    SearchComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -60,7 +68,7 @@ const appRoutes: Routes = [
     FormsModule,
 
   ],
-  providers: [UserService,DashboardService],
+  providers: [UserService,DashboardService,SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

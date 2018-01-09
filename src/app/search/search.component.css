@@ -1,0 +1,33 @@
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css');
+.bg-dark {
+    background-color: #343a40!important;
+}
+
+#contact .card:hover i,#contact .card:hover h4{
+	color: #87d37c;
+}
+
+#contact .card{
+	height: 200px;
+}
+
+#contact
+{
+
+}
+
+#Cimg{
+  height: 20vh;
+}
+
+#row {
+  margin:15px 0;
+}
+label {
+  margin-bottom: 0;
+  margin-left: 1px;
+}
+
+.form-inline{
+    margin: 0 auto;
+}
