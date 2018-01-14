@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/auth/auth.service';
+ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,10 +8,14 @@ import { UserService } from '../services/auth/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-private isAuthenticated = false;
-  constructor(private auth:UserService) {
+ isAuthenticated = false;
+  constructor(private auth:UserService,private router:Router) {
    }
-
+logout(){
+    this.auth.destroyToken();
+    this.router.navigate(['']);
+     
+}
    
   ngOnInit() {
 
@@ -18,6 +23,11 @@ private isAuthenticated = false;
           this.isAuthenticated = true;
       }
    
+  }
+
+  home(){
+      this.router.navigate(['']);
+      
   }
  
 }

@@ -8,19 +8,24 @@ export class UserService {
   constructor(private http:Http) { }
   private oauthUrl = "http://127.0.0.1:8000/oauth/token";
   private regUrl = "http://127.0.0.1:8000/api/register";
+  private emailValidationUrl = "http://127.0.0.1:8000/api/emailCheck";
+   private UserUrl = "http://127.0.0.1:8000/api/user";
   token :string ='';
+  id;
   private expiration;
+  authenticatedUser = {};
 
-  login(){
+
+  login(username,password){
 
 
 
         let postData = {
             grant_type: "password",
             client_id: 2,
-            client_secret: "8VNuoB3SP0D2ITaJnu9fPJkZ3DBBZ5va5Ivav9t4",
-            username: "mackmorerwa@gmail.com",
-            password: "1234567",
+            client_secret: "l3mOmHIoDvlrHKvA73Efquebode9WjVfxGZ20gsT",
+            username: username,
+            password: password,
             scope: ""
         }
 
@@ -31,10 +36,40 @@ export class UserService {
 
     }
 
+
+    GetUser(token:any)
+    {
+        let postData ={
+            Authorization:'Bearer'+' '+token
+        }
+
+        return this.http.post(this.UserUrl,postData)
+             .map((res: Response) => res.json())
+        
+
+    }
+
+    setUser(id){
+        localStorage.setItem('id',id);
+    }
+
+     getUser(){
+        this.id = localStorage.getItem('id');
+         if(! this.id ){
+
+    
+    this.destroyToken();
+    return null;
+  }
+  return this.id;
+    }
+
 setToken(token,expiration)
 {
     localStorage.setItem('token',token);
     localStorage.setItem('expiration', expiration);
+
+    
 
 
 }
@@ -56,7 +91,7 @@ getToken()
     return null;
   }
 
-    if(Date.now() > this.expiration){
+    if(Date.now() > parseInt(this.expiration)){
 
         this.destroyToken();
         return null;
@@ -74,6 +109,17 @@ isAuthenticated(){
       {
         return false;
       }
+}
+
+setAuthenticatedUser(data)
+{
+    this.authenticatedUser = data;
+}
+
+
+getAuthenticatedUser()
+{
+    return this.authenticatedUser;
 }
 // register
 

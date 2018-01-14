@@ -24,8 +24,10 @@ Rooms: string = '';
     }
 
   ngOnInit() {
-
+   
     this.search.remove_search_data();
   }
+
+  
 
 }

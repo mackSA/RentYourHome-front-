@@ -5,6 +5,12 @@
     <div class="row" style="margin-top:200px;">
                 <!-- Grid column -->
                 <div class="col-md-6 offset-md-3  mb-4">
+                     <div *ngIf='success' >
+                    <div class="alert alert-success alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Success </strong>Sign Up Succesful
+                    </div>
+            </div>
                     <div class="card">
                         <div class="card-body">
                             <!-- Form register -->
@@ -12,21 +18,26 @@
                                 <h2 class="text-center font-up font-bold deep-orange-text py-4">Sign up</h2>
                                 <div class="md-form">
                                     <i class="fa fa-user prefix grey-text"></i>
-                                    <input type="text" id="orangeForm-name3" class="form-control" [(ngModel)]="username" name="username" placeholder="Username">
-                                   
+                                    <input type="text" id="orangeForm-name3" class="form-control" [(ngModel)]="username" name="username" placeholder="Username" #usernameField="ngModel" required>
+                                   <p style="color: red" *ngIf= 'usernameField.touched && usernameField.invalid && usernameField.errors.required'>Username is required</p>
                                 </div>
                                 <div class="md-form">
                                     <i class="fa fa-envelope prefix grey-text"></i>
-                                    <input type="text" id="orangeForm-email3" class="form-control" [(ngModel)]="email" name="email" placeholder="email">
+                                  
+                                    <input type="text" id="orangeForm-email3" class="form-control" [(ngModel)]="email" name="email" placeholder="email" #emailField="ngModel" required >
+                                       <p style="color: red" *ngIf= 'emailField.touched && emailField.invalid && emailField.errors.required'>Email is required</p> 
+                                       <p style="color: red" *ngIf="!emailAvalible">Already Exists</p> 
                                     
                                 </div>
                                 <div class="md-form">
                                     <i class="fa fa-lock prefix grey-text"></i>
-                                    <input type="password" id="orangeForm-pass3" class="form-control" [(ngModel)]="password" name="password" placeholder="password">
+                                    <input type="password" id="orangeForm-pass3" minlength="6"  class="form-control" [(ngModel)]="password" name="password" placeholder="password" #passwordField="ngModel" required>
+                                        <p style="color: red" *ngIf= 'passwordField.touched && passwordField.invalid && passwordField.errors.required'>Password is required</p>
+                                         <p style="color: red" *ngIf= 'passwordField.touched && passwordField.invalid && passwordField.errors.minlength'>Password should be more then 6 charactors</p>
                                    
                                 </div>
                                 <div class="text-center">
-                                    <button class="btn btn-deep-orange" type="submit">next<i class="fa fa-angle-double-right pl-2" aria-hidden="true"></i></button>
+                                    <button class="btn btn-deep-orange" [disabled]="!yourForm.valid" type="submit">Register<i class="fa fa-angle-double-right pl-2" aria-hidden="true"></i></button>
                                 </div>
                             </form>
                             <!-- Form register -->

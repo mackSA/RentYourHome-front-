@@ -10,6 +10,7 @@ import { SearchService } from './../services/search.service';
 export class SearchComponent implements OnInit {
   location;
   rooms;
+  Listings :any[] = [];
 
   constructor(private search:SearchService,private router:Router) { }
 
@@ -21,8 +22,13 @@ export class SearchComponent implements OnInit {
      post.append("rooms", data.rooms);
 
     this.search.search(post).subscribe(res =>{
-       console.log(res);
+
+        this.Listings = res;
+               console.log(this.Listings);
+
     });
+
+    
   }
 
 }

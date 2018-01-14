@@ -9,27 +9,43 @@ import { UserService } from '../../services/auth/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-email: string = '';
 password: string = '';
+username: string = '';
+error = false;
+message:string;
+isAuthenticated =false;
+
 
   constructor(private user:UserService,private router:Router) { }
 
   
-loginUser()
+ onSubmit(): void
 {
-  this.user.login().subscribe(
+  this.user.login(this.username,this.password).subscribe(
     data => {
       this.user.setToken(data.access_token,data.expires_in + Date.now());
 
       if(this.user.isAuthenticated()){
            this.router.navigate(['dasboard']);
+            this.isAuthenticated = true;
       }
-    console.log(data);
+     this.isAuthenticated = true;
+
+    
    
+},error =>{
+ this.error = true;
+
 });
 }
 
   ngOnInit() {
+    if(this.user.isAuthenticated()){
+        this.router.navigate(['dasboard']);
+         this.isAuthenticated = true;
+    }
   }
+
+   
 
 }

@@ -18,11 +18,41 @@
         <div class="container" align="center">
           <h3 class="display-4 text-center" style="padding:35px;margin-top:50px; margin-bottom:20px;">Pick your home away from home</h3>
           <hr class="bg-dark w-25">
-       
+            
         </div>
       </section>
 
 
+<div class="container-fluid">
+<div class="row" >
+
+  <div *ngFor="let listing of Listings">
+    <div class="col-md-2 offset-md-1">
+<div id="container">
+  <div id="mainimage">
+    <div id="heart"><span class="entypo-heart"></span></div>
+    <span class="likes">{{listing.heading}}</span>
+    <div id="slides"><img src="https://s1.postimg.org/j4t3ytrkf/slidestest.jpg" title="image" /></div>
+  </div>
+  
+  <div id="ratingbox"><span class="counter">9.5</span>
+  </div>
+  <div id="infopanel" >
+    <p>{{listing.location}}</p>
+    <div id="stars">
+      <span class="entypo-star-empty"></span>
+      <span class="entypo-star-empty"></span>
+      <span class="entypo-star-empty"></span>
+      <span class="entypo-star-empty"></span>
+    </div>
+    <h2><i class="fa fa-bath" aria-hidden="true" style="font-size:24px; "></i><span> {{listing.brooms}}</span> <i style="font-size:24px;" class="fa">&#xf236;</i><span> {{listing.rooms}}</span></h2>
+    <button>More</button>
+  </div>
+  </div>
+  </div>
+</div>
+</div>
+</div>
 
       
 

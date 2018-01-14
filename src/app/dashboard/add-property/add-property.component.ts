@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../services/dashboard.service';
+ import {Router} from '@angular/router';
+ import { UserService } from '../../services/auth/auth.service'
 
 @Component({
   selector: 'app-add-property',
@@ -18,7 +20,7 @@ myFile1:File;
 myFile2:File;
 myFile3:File;
 _formData;
-  constructor(public dash:DashboardService) { }
+  constructor(public dash:DashboardService,private router:Router,private auth:UserService) { }
 
 fileChange(event){
      let fileList: FileList = event.target.files;
@@ -70,6 +72,11 @@ onSubmit(): void {
 
 }
   ngOnInit() {
+    if(this.auth.isAuthenticated()){
+        
+    }else{
+      this.router.navigate(['Signup']);
+    }
   }
 
 }

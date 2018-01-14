@@ -13,6 +13,9 @@ email: string = '';
 password: string = '';
 username:string = "";
 
+success =false;
+emailAvalible = true;
+
   constructor(private user:UserService,private router:Router) { }
 
   onSubmit(): void
@@ -25,15 +28,20 @@ username:string = "";
         }
   this.user.register(postData).subscribe(
     data => {
-      
+      this.success = true;  
 
-     
-           this.router.navigate(['Signin']);
+     setTimeout(()=>{ this.router.navigate(['Signin'])},2300);
       
-    console.log(data);
+      
    
+   
+}, error=>{
+      
+    this.emailAvalible = false;
+    
 });
 }
+
 
   ngOnInit() {
 
